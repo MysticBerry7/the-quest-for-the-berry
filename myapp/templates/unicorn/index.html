@@ -4,12 +4,12 @@
 
 <html>
     <head>
-        <title>My First Unicorn Component</title>
+        {% unicorn_scripts %}
     </head>
     <body>
         {% csrf_token %}
-        <h1>My First Unicorn Component</h1>
 
         {% unicorn 'search-for-materials' %}
+
     </body>
 </html>
