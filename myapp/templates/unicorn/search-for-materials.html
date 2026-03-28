@@ -1,28 +1,35 @@
 <div>
-    <button unicorn:click="search">Search</button>
+    <h1>Welcome to the Quest for The Berry!</h1>
+    <h2>Click the button below to start searching for ingredients! You want to create the Elixir of Life, as it makes your friends, The Dragonflies, immortal.</h2>
 
-    <h2>Potion active? {{ potion_active }}</h2>
+    <button unicorn:click="search">Search for regular ingredients</button>
+    <button unicorn:click="include_berry">Search for The Berry</button>
 
     <h1>Your list of materials</h1>
 
     <h2>Common materials</h2>
-    
     <p>Rocks: {{ rocks }}</p>
     <p>Leaves: {{ leaves }}</p>
     <p>Twigs: {{ twigs }}</p>
     <p>Bird eggs: {{ bird_eggs }}</p>
     <p>Antlers: {{ antlers }}</p>
-    <br />
 
     <h2>Rare materials</h2>
     <p>Beetles: {{ beetles }}</p>
     <p>Quartz: {{ quartz }}</p>
     <p>Frog legs: {{ frog_legs }}</p>
-    <br />
 
-    <h2>The Berry</h2>
+    <button unicorn:click="craft_potion">Craft potion?</button>
 
-    <p>Have The Berry? {{ have_berry }}</p>
+    <h2>Potion active? - {{ potion_crafted }}</h2>
+    <p>If the above condition is true, you are able to find The Berry. It is integral to the creation of the Elixir of Life. You only need 1 of The Berry and 3 of each other ingredient to complete the game.</p>
 
-    <h2>Have all needed ingredients? {{ have_all }}</h2>
+    <p>The Berry: {{ the_berry }}</p>
+    <h2>To craft the Elixir of Life, you need at least 3 of each ingredient and 1 Berry.</h2>
+
+    <button unicorn:click="craft_elixir">Create the Elixir of Life</button>
+    {% if elixir_crafted %}
+    <p>You win!</p>
+    {% endif %}
+
 </div>
