@@ -19,8 +19,10 @@ class SearchForMaterialsView(UnicornView):
 
     the_berry = 0
     
-    potion_crafted = False
+    enough_ing_for_potion = False
+    potion_crafted = False   # Potion and elixir states
 
+    enough_ing_for_elixir = False
     elixir_crafted = False
     
     def search(self):
@@ -48,7 +50,7 @@ class SearchForMaterialsView(UnicornView):
 
     def craft_potion(self):   # Craft potion needed for the berry
         if self.rocks != 0 and self.leaves != 0 and self.twigs != 0 and self.bird_eggs != 0 and self.antlers != 0 and self.beetles != 0 and self.quartz != 0 and self.frog_legs != 0: 
-            self.rocks -= 1
+            self.rocks -= 1   # Remove 1 of each ingredient
             self.leaves -= 1
             self.twigs -= 1
             self.bird_eggs -= 1
@@ -59,6 +61,9 @@ class SearchForMaterialsView(UnicornView):
             self.frog_legs -= 1
 
             self.potion_crafted = True
+            self.enough_ing_for_potion = True
+        else:
+            self.enough_ing_for_potion = False
 
     def include_berry(self):
         if self.potion_crafted == True:
@@ -87,17 +92,21 @@ class SearchForMaterialsView(UnicornView):
                 self.the_berry += 1
 
     def craft_elixir(self):   # Remove required amount of ingredients and finish the game
-        if self.rocks >= 3 and self.leaves >= 3 and self.twigs >= 3 and self.bird_eggs >= 3 and self.antlers >= 3 and self.beetles >= 3 and self.quartz >= 3 and self.frog_legs >=3 and self.beetles >= 3 and self.quartz >= 3 and self.frog_legs >= 3 and self.the_berry != 0:
-            self.rocks -= 3
-            self.leaves -= 3
-            self.twigs -= 3
-            self.bird_eggs -= 3
-            self.antlers -= 3
+        if self.rocks >= 5 and self.leaves >= 5 and self.twigs >= 5 and self.bird_eggs >= 5 and self.antlers >= 5 and self.beetles >= 5 and self.quartz >= 5 and self.frog_legs >=5 and self.beetles >= 5 and self.quartz >= 5 and self.frog_legs >= 5 and self.the_berry >= 3:
+            self.rocks -= 5
+            self.leaves -= 5
+            self.twigs -= 5
+            self.bird_eggs -= 5
+            self.antlers -= 5
 
-            self.beetles -= 3
-            self.quartz -= 3
-            self.frog_legs -= 3
+            self.beetles -= 5
+            self.quartz -= 5
+            self.frog_legs -= 5
 
-            self.the_berry -= 1
+            self.the_berry -= 3
 
-            self.elixir_crafted = True
+            self.elixir_crafted = True   # Once this turns true, the game is complete
+            self.enough_ing_for_elixir = True
+        else:
+            self.enough_ing_for_elixir = False
+
