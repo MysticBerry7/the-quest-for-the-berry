@@ -33,6 +33,10 @@
     <button unicorn:click="search">Search for regular ingredients</button>
     <button unicorn:click="include_berry">Search for The Berry</button>
 
+
+    <p style="color:red">You need one of each ingredient (except The Berry) to craft the potion...</p>
+    <p style="color:red">If you do not have enough ingredients, nothing will be crafted!</p>
+
     <h2>Your list of materials</h2>
 
     <h3>Common materials</h3>
@@ -48,9 +52,6 @@
     <p>Frog legs: {{ frog_legs }}</p>
 
     <button unicorn:click="craft_potion">Craft potion?</button>
-    {% if not enough_ing_for_potion %}
-    <p style="color:red">Not enough ingredients!</p>
-    {% endif %}
 
     <h3>Potion active? - {{ potion_crafted }}</h3>
     <p style="color:red">If the above condition is true, you are able to find The Berry. It is integral to the creation of the Elixir of Life.</p>
@@ -59,10 +60,6 @@
     <p style="color:red">To craft the Elixir of Life, you need at least 5 of each ingredient and 3 Berries.</p>
 
     <button unicorn:click="craft_elixir">Create the Elixir of Life</button>
-    
-    {% if not enough_ing_for_elixir %}
-    <p style="color:red">Not enough ingredients!</p>
-    {% endif %}
 
     {% if elixir_crafted %}
     <p>You win!</p>

@@ -19,11 +19,9 @@ class SearchForMaterialsView(UnicornView):
 
     the_berry = 0
     
-    enough_ing_for_potion = False
-    potion_crafted = False   # Potion and elixir states
+    potion_crafted = False   # Potion state
 
-    enough_ing_for_elixir = False
-    elixir_crafted = False
+    elixir_crafted = False   # Elixir state
     
     def search(self):
         item_det = randint(0, 5)  # Determine rarity of found item
@@ -61,9 +59,6 @@ class SearchForMaterialsView(UnicornView):
             self.frog_legs -= 1
 
             self.potion_crafted = True
-            self.enough_ing_for_potion = True
-        else:
-            self.enough_ing_for_potion = False
 
     def include_berry(self):
         if self.potion_crafted == True:
@@ -106,7 +101,3 @@ class SearchForMaterialsView(UnicornView):
             self.the_berry -= 3
 
             self.elixir_crafted = True   # Once this turns true, the game is complete
-            self.enough_ing_for_elixir = True
-        else:
-            self.enough_ing_for_elixir = False
-
